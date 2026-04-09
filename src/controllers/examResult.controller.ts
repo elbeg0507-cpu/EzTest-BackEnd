@@ -86,6 +86,7 @@ async function upload(req: Request, res: Response, next: NextFunction) {
       }, [])
       return { studentId: result.qrData, analysis, rawImage: result.rawImage };
     })
+    console.log("Analysis Results:", analysisResults?.[0]?.analysis);
 
     await Promise.all(analysisResults.map(async (analysisResult) => {
       const student = await StudentModel.findById(analysisResult.studentId);
